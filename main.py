@@ -3,7 +3,6 @@ from tkinter import ttk
 from tkinter import messagebox
 import os
 import shutil
-import pathlib
 import platform
 
 def get_browser_paths():
@@ -59,16 +58,18 @@ def clean_cache_and_cookies():
 
 root = tk.Tk()
 root.title("Очистка кеша и cookie")
+root.geometry('298x80+0+0')
+root.resizable(False, False)
 
 browsers = list(get_browser_paths().keys())
 
 browser_var = tk.StringVar(root)
 browser_var.set(browsers[0] if browsers else "")
-browser_dropdown = ttk.Combobox(root, textvariable=browser_var, values=browsers)
-browser_dropdown.pack(pady=10)
+browser_dropdown = ttk.Combobox(root, textvariable=browser_var, values=browsers, width=36)
+browser_dropdown.place(x=10, y=10)
 
-clean_button = ttk.Button(root, text="Очистить", command=clean_cache_and_cookies)
-clean_button.pack(pady=10)
+clean_button = ttk.Button(root, text="Очистить", command=clean_cache_and_cookies, width=38)
+clean_button.place(x=10, y=40)
 
 root.mainloop()
 
